@@ -15,7 +15,7 @@ public class Cidade {
     int x;
     int y;
     
-    Cidade(int x, int y, int id){
+    public Cidade(int x, int y, int id){
         this.x = x;
         this.y = y;
         this.id = id;
