@@ -21,7 +21,7 @@ public class PCVStrategy {
     private GeradorIndividuo gi;
     private GeradorPopulacao gp;
     
-    PCVStrategy(Mutador m, CalculadorPeso cp, GeradorIndividuo gi, GeradorPopulacao gp){
+    public PCVStrategy(Mutador m, CalculadorPeso cp, GeradorIndividuo gi, GeradorPopulacao gp){
         this.m = m;
         this.cp = cp;
         this.gi = gi;
