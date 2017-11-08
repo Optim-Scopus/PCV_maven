@@ -5,8 +5,8 @@
  */
 package com.tcc.pcv.calculadores_peso;
 
-import java.util.ArrayList;
 import com.tcc.pcv.Cidade;
+import java.util.List;
 
 /**
  *
@@ -14,7 +14,7 @@ import com.tcc.pcv.Cidade;
  */
 public abstract class CalculadorPeso {
     
-    public int calculaPeso(ArrayList<Cidade> t){
+    public int calculaPeso(List<Cidade> t){
         int peso = 0;
         for(int i = 0; i < t.size() - 1; i++){
             peso += calculaDistancia(t.get(i), t.get(i + 1)) + calculaEspera(t.get(i));

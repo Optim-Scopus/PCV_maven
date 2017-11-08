@@ -7,6 +7,7 @@ package com.tcc.pcv;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.Collections;
 public class Tour {
     
     // Holds our tour of cities
-    private ArrayList tour = new ArrayList<Cidade>();
+    private List<Cidade> tour = new ArrayList<>();
     // Cache
     private double fitness = 0;
     private int peso = 0;
@@ -75,6 +76,14 @@ public class Tour {
     // Check if the tour contains a cidade
     public boolean containsCidade(Cidade cidade){
         return tour.contains(cidade);
+    }
+    
+    public List<Integer> getCitiesAsIdsList(){
+        List<Integer> returnList = new ArrayList<>();
+        for (Cidade city : tour) {
+            returnList.add(city.id);
+        }
+        return returnList;
     }
     
     @Override
