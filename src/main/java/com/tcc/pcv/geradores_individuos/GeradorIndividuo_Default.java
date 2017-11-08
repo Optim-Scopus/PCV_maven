@@ -5,10 +5,17 @@
  */
 package com.tcc.pcv.geradores_individuos;
 
+import com.tcc.pcv.GerenciadorTour;
+import com.tcc.pcv.PCVStrategy;
+
 /**
  *
  * @author Ken
  */
 public class GeradorIndividuo_Default extends GeradorIndividuo{
+    
+    public GeradorIndividuo_Default(int qtdCidades, GerenciadorTour gt) {
+        super(qtdCidades, gt);
+    }
     
 }

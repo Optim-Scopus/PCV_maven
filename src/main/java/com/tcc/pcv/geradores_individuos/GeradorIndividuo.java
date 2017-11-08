@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import com.tcc.pcv.Cidade;
 import com.tcc.pcv.GerenciadorTour;
+import com.tcc.pcv.PCVStrategy;
 
 /**
  *
@@ -16,11 +17,19 @@ import com.tcc.pcv.GerenciadorTour;
  */
 public abstract class GeradorIndividuo {
     
+    private final int qtdCidades;
+    private final GerenciadorTour gt;
+    
+    public GeradorIndividuo(int qtdCidades, GerenciadorTour gt) {
+        this.qtdCidades = qtdCidades;
+        this.gt = gt;
+    }
+    
     public ArrayList<Cidade> geraIndividuo(){
         ArrayList<Cidade> tour = new ArrayList<Cidade>();
         // Loop through all our destination cities and add them to our tour
-        for (int i = 0; i < GerenciadorTour.qtdCidades(); i++) {
-          tour.add(GerenciadorTour.getCidade(i));
+        for (int i = 0; i < qtdCidades; i++) {
+          tour.add(gt.getCidade(i));
         }
         // Randomly reorder the tour
         Collections.shuffle(tour);

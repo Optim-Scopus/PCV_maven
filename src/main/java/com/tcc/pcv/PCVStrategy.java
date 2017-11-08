@@ -16,16 +16,22 @@ import com.tcc.pcv.mutadores.Mutador;
  */
 public class PCVStrategy {
     
-    private Mutador m;
-    private CalculadorPeso cp;
-    private GeradorIndividuo gi;
-    private GeradorPopulacao gp;
+    private final Mutador m;
+    private final CalculadorPeso cp;
+    private final GeradorIndividuo gi;
+    private final GeradorPopulacao gp;
+    private final int qtdCidades;
     
-    public PCVStrategy(Mutador m, CalculadorPeso cp, GeradorIndividuo gi, GeradorPopulacao gp){
+    public PCVStrategy(Mutador m, CalculadorPeso cp, GeradorIndividuo gi, GeradorPopulacao gp, int qtdCidades){
         this.m = m;
         this.cp = cp;
         this.gi = gi;
         this.gp = gp;
+        this.qtdCidades = qtdCidades;
+    }
+
+    public int getQtdCidades() {
+        return qtdCidades;
     }
     
     public Mutador getMutador(){

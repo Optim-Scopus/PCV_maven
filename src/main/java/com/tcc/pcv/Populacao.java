@@ -12,15 +12,18 @@ package com.tcc.pcv;
 public class Populacao {
     // Holds populacao of tours
     Tour[] tours;
-
+    
+    private final PCVStrategy strat;
+    
     // Construct a populacao
-    public Populacao(int tamanhoPop, boolean init) {
+    public Populacao(int tamanhoPop, boolean init, PCVStrategy strat) {
+        this.strat = strat;
         tours = new Tour[tamanhoPop];
         // If we need to init a populacao of tours do so
         if (init) {
             // Loop and create individuals
             for (int i = 0; i < tamanhoPop(); i++) {
-                Tour novoTour = new Tour(Pcv.strat.getGeradorIndividuo().geraIndividuo());
+                Tour novoTour = new Tour(strat, strat.getGeradorIndividuo().geraIndividuo());
                 saveTour(i, novoTour);
             }
         }

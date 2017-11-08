@@ -20,16 +20,19 @@ public class Tour {
     // Cache
     private double fitness = 0;
     private int peso = 0;
-//    private PCVStrategy strat; 
+    
+    private final PCVStrategy strat;
     
     // Constructs a blank tour
-    public Tour(){
-        for (int i = 0; i < GerenciadorTour.qtdCidades(); i++) {
+    public Tour(PCVStrategy strat){
+        this.strat = strat;
+        for (int i = 0; i < strat.getQtdCidades(); i++) {
             tour.add(null);
         }
     }
     
-    public Tour(ArrayList tour){
+    public Tour(PCVStrategy strat, ArrayList tour){
+        this.strat = strat;
         this.tour = tour;
     }
 
@@ -48,7 +51,7 @@ public class Tour {
     
     // Creates a random individual
     public void geraIndividuo() {
-        tour = Pcv.strat.getGeradorIndividuo().geraIndividuo();
+        tour = strat.getGeradorIndividuo().geraIndividuo();
     }
 
     
@@ -63,7 +66,7 @@ public class Tour {
     // Gets the total peso of the tour
     public int getPeso(){
         if (peso == 0) {
-            peso = Pcv.strat.getCalculadorPeso().calculaPeso(tour);
+            peso = strat.getCalculadorPeso().calculaPeso(tour);
         }
         return peso;
     }

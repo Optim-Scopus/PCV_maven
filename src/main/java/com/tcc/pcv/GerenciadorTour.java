@@ -14,20 +14,20 @@ import java.util.ArrayList;
 public class GerenciadorTour {
     
     // Holds our cities
-    private static ArrayList cidades = new ArrayList<Cidade>();
+    private ArrayList cidades = new ArrayList<Cidade>();
 
     // Adds a destination city
-    public static void addCidade(Cidade city) {
+    public void addCidade(Cidade city) {
         cidades.add(city);
     }
     
     // Get a city
-    public static Cidade getCidade(int index){
+    public Cidade getCidade(int index){
         return (Cidade) cidades.get(index);
     }
     
     // Get the number of destination cities
-    public static int qtdCidades(){
+    public int qtdCidades(){
         return cidades.size();
     }
     

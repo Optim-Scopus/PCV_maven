@@ -17,8 +17,8 @@ public class AG {
     private static final boolean elitism = true;
 
     // Evolves a population over one generation
-    public static Populacao evolvePopulacao(Populacao pop) {
-        Populacao newPopulacao = new Populacao(pop.tamanhoPop(), false);
+    public static Populacao evolvePopulacao(PCVStrategy strat, Populacao pop) {
+        Populacao newPopulacao = new Populacao(pop.tamanhoPop(), false, strat);
 
         // Keep our best individual if elitism is enabled
         int elitismOffset = 0;
@@ -32,10 +32,10 @@ public class AG {
         // Current population
         for (int i = elitismOffset; i < newPopulacao.tamanhoPop(); i++) {
             // Select parents
-            Tour parent1 = tournamentSelection(pop);
-            Tour parent2 = tournamentSelection(pop);
+            Tour parent1 = tournamentSelection(pop, strat);
+            Tour parent2 = tournamentSelection(pop, strat);
             // Crossover parents
-            Tour child = crossover(parent1, parent2);
+            Tour child = crossover(parent1, parent2, strat);
             // Add child to new population
             newPopulacao.saveTour(i, child);
         }
@@ -49,9 +49,9 @@ public class AG {
     }
 
     // Applies crossover to a set of parents and creates offspring
-    public static Tour crossover(Tour parent1, Tour parent2) {
+    public static Tour crossover(Tour parent1, Tour parent2, PCVStrategy strat) {
         // Create new child tour
-        Tour child = new Tour();
+        Tour child = new Tour(strat);
 
         // Get start and end sub tour positions for parent1's tour
         int startPos = (int) (Math.random() * parent1.tourSize());
@@ -108,9 +108,9 @@ public class AG {
     }
 
     // Selects candidate tour for crossover
-    private static Tour tournamentSelection(Populacao pop) {
+    private static Tour tournamentSelection(Populacao pop, PCVStrategy strat) {
         // Create a tournament population
-        Populacao tournament = new Populacao(tournamentSize, false);
+        Populacao tournament = new Populacao(tournamentSize, false, strat);
         // For each place in the tournament get a random candidate tour and
         // add it
         for (int i = 0; i < tournamentSize; i++) {
